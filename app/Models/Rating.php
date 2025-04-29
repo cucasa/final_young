@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
+    protected $fillable = ['value', 'user_id', 'article_id'];
+
     // Una valoración pertenece a un usuario
     public function user()
     {
@@ -17,4 +19,5 @@ class Rating extends Model
     {
         return $this->belongsTo(Article::class);
     }
+
 }

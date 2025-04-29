@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('threads', function (Blueprint $table) {
+        Schema::create('forums', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Usuario que creó el hilo
-            $table->foreignId('forum_id')->constrained()->onDelete('cascade'); // Foro al que pertenece
+            $table->string('nombre');
+            $table->text('descripcion')->nullable();
 
             $table->timestamps();
         });
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('threads');
+        Schema::dropIfExists('forums');
     }
 };

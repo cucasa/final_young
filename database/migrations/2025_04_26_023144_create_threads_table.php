@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('forums', function (Blueprint $table) {
+        Schema::create('threads', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('titulo');
+            $table->text('body');
+            $table->foreignId('users_id')->constrained('users');
+            $table->foreignId('forums_id')->constrained('forums');
+            $table->foreignId('categories_id')->constrained('categories');
 
             $table->timestamps();
         });
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('forums');
+        Schema::dropIfExists('threads');
     }
 };

@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
 
-            $table->string('reason');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Usuario que reporta
-            $table->foreignId('article_id')->nullable()->constrained()->onDelete('cascade'); // Artículo reportado
-            $table->foreignId('comment_id')->nullable()->constrained()->onDelete('cascade'); // Comentario reportado
+            $table->string('razon');
+            $table->foreignId('users_id')->constrained('users');
+            $table->morphs('ratings');
 
             $table->timestamps();
         });

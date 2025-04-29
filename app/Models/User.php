@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -46,6 +49,8 @@ class User extends Authenticatable
         ];
     }
 
+    // ✅ Relaciones personalizadas
+
 
     // Un usuario tiene un rol
     public function role()
@@ -71,22 +76,23 @@ class User extends Authenticatable
         return $this->hasMany(Rating::class);
     }
 
-    // Un usuario puede realizar muchos reportes
+    // Un usuario puede crear muchos reportes
     public function reports()
     {
         return $this->hasMany(Report::class);
     }
 
-    // Un usuario puede crear muchos threads
+    // Un usuario puede crear muchos hilos
     public function threads()
     {
         return $this->hasMany(Thread::class);
     }
 
-    // Un usuario puede crear muchos posts
+    // Un usuario puede hacer muchos posts
     public function posts()
     {
         return $this->hasMany(Post::class);
     }
+
 
 }

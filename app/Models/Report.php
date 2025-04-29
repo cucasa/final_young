@@ -6,15 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Report extends Model
 {
-        // Un reporte pertenece a un usuario
-        public function user()
-        {
-            return $this->belongsTo(User::class);
-        }
+    protected $fillable = ['reason', 'user_id'];
 
-        // Relación polimórfica a article o comment
-        public function reportable()
-        {
-            return $this->morphTo();
-        }
+    // Un reporte pertenece a un usuario (quien lo hizo)
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Un reporte puede pertenecer a muchos tipos de contenido
+    public function reported()
+    {
+        return $this->morphTo();
+    }
 }
+

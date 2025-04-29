@@ -6,9 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
 {
-     // Un foro puede tener muchos threads
-     public function threads()
-     {
-         return $this->hasMany(Thread::class);
-     }
+    protected $fillable = ['name', 'description', 'category_id'];
+
+    // Un foro pertenece a una categoría
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    // Un foro puede tener muchos hilos
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
 }
+
