@@ -13,7 +13,7 @@ class Thread extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+   
     // Un hilo pertenece a un foro
     public function forum()
     {

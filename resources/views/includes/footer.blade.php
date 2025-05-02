@@ -1,26 +1,27 @@
-<!-- Contenido de la página de inicio, como el carrusel y otras secciones -->
-
-<!-- Footer -->
 <footer class="bg-dark text-white py-4">
     <div class="container">
         <div class="row">
+            <!-- Información de contacto -->
             <div class="col-md-6">
                 <h5>Contacto</h5>
-                <p>Academia de Taekwondo<br>
-                Dirección: [Tu dirección]<br>
-                Teléfono: [Tu teléfono]<br>
-                Correo electrónico: [Tu correo electrónico]</p>
-            </div>
-            <div class="col-md-6">
+                <p>
+                    YoungStar<br>
+                    Dirección: Calle Ejemplo 123, Ciudad, País<br>
+                    Teléfono: +123 456 7890<br>
+                    Correo electrónico: contacto@youngstar.com
+                </p>
+            </div> 
+
+            <!-- Redes sociales -->
+            <div class="col-md-6 text-md-end">
                 <h5>Síguenos</h5>
-                <ul class="list-inline">
-                    <li class="list-inline-item"><a href="[Enlace a Facebook]"><i class="fab fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="[Enlace a Twitter]"><i class="fab fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="[Enlace a Instagram]"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
             </div>
         </div>
-        <hr>
-        <p class="text-center">&copy; {{ date('Y') }} Academia de Taekwondo. Todos los derechos reservados.</p>
+        <hr class="border-light">
+        <p class="text-center mb-0">&copy; {{ date('Y') }} YoungStar. Todos los derechos reservados.</p>
     </div>
 </footer>

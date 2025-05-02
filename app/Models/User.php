@@ -95,4 +95,12 @@ class User extends Authenticatable
     }
 
 
+    // Relación: Un usuario puede crear muchos foros
+    public function forums()
+    {
+        return $this->hasMany(Forum::class);
+    }
+
+
+
 }

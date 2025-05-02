@@ -1,51 +1,46 @@
-{{-- filepath: c:\xampp\htdocs\yostar\resources\views\foros.blade.php --}}
+{{-- filepath: c:\xampp\htdocs\yostar\resources\views\foros\create.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
 <div class="container py-4">
-    {{-- Encabezado --}}
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold">Foros</h2>
-        <a href="{{ route('foros.create') }}" class="btn btn-primary">Crear nuevo foro</a>
-    </div>
+    <h1 class="text-center mb-4">Foros</h1>
 
-    {{-- Filtro por categoría --}}
-    <form method="GET" action="{{ route('foros') }}" class="mb-4">
-        <div class="row g-2 align-items-center">
-            <div class="col-auto">
-                <select name="categoria" class="form-select">
-                    <option value="">Todas las categorías</option>
-                    <option value="tecnologia">Tecnología</option>
-                    <option value="ciencia">Ciencia</option>
-                    <option value="arte">Arte</option>
-                </select>
-            </div>
-            <div class="col-auto">
-                <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
-            </div>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
         </div>
-    </form>
+    @endif
 
-    {{-- Lista de foros --}}
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        @if(isset($foros) && count($foros) > 0)
-            @foreach($foros as $foro)
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $foro->titulo }}</h5>
-                            <p class="card-text text-truncate">{{ $foro->descripcion }}</p>
-                            <span class="badge bg-info text-dark">{{ ucfirst($foro->categoria) }}</span>
-                        </div>
-                        <div class="card-footer text-end">
-                            <a href="{{ route('foros.show', $foro->id) }}" class="btn btn-sm btn-outline-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @else
-            <p class="text-muted">No hay foros disponibles.</p>
-        @endif
-    </div>
+    <h2 class="mb-3">Categorías Disponibles</h2>
+    <ul class="list-group mb-4">
+        @forelse($categories as $category)
+            <li class="list-group-item">{{ $category->name }}</li>
+        @empty
+            <li class="list-group-item">No hay categorías disponibles.</li>
+        @endforelse
+    </ul>
+
+    <h2 class="mb-3">Crear un nuevo foro</h2>
+    <form action="{{ route('foros.store') }}" method="POST">
+        @csrf
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre del Foro</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Escribe el nombre del foro" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Escribe una descripción para el foro" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="category_id" class="form-label">Categoría</label>
+            <select class="form-control" id="category_id" name="category_id" required>
+                <option value="">Selecciona una categoría</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear Foro</button>
+    </form>
 </div>
 @endsection

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
-
+ 
             $table->string('titulo');
             $table->text('body');
             $table->foreignId('users_id')->constrained('users');
