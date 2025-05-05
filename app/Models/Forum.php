@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Forum extends Model
-{ 
-    protected $fillable = ['name', 'description', 'category_id'];
+{
+    use HasFactory;
+
+    protected $fillable = ['name', 'description', 'category_id', 'user_id'];
 
     // Un foro pertenece a una categoría
     public function category()
@@ -20,13 +23,10 @@ class Forum extends Model
         return $this->hasMany(Thread::class);
     }
 
-    // Un foro pertenece a un usuario (creador)
+    // Relación: Un foro pertenece a un usuario
     public function user()
     {
-     return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
-
-
-
 }
 

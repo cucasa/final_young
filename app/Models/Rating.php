@@ -13,7 +13,7 @@ class Rating extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+ 
     // Una valoración pertenece a un artículo
     public function article()
     {

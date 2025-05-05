@@ -33,12 +33,12 @@
 
             <!-- Botón de sesión -->
             <div class="d-flex">
-                <a href="#" class="btn btn-light fw-semibold me-2">Iniciar sesión</a>
-                <a href="login" class="btn btn-outline-light fw-semibold">Registrarse</a>
+                <a href="{{ route('entrada') }}" class="btn btn-light fw-semibold me-2">Iniciar sesión</a>
+                <a href="{{ route('registro') }}" class="btn btn-outline-light fw-semibold">Registrarse</a>
             </div>
         </div>
     </div>
 </nav>
-
+ 
 
 

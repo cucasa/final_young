@@ -1,27 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\body;
-use App\Http\Controllers\Login;
+use App\Http\Controllers\Body;
+use App\Http\Controllers\Entrada;
 use App\Http\Controllers\ForumController;
 
-
-
+// Página de inicio
 Route::get('/', function () {
-    return view ('welcome');
+    return view('welcome');
 });
 
+// Página principal
+Route::get('youngstar', [Body::class, 'create1'])->name('home');
 
-//body el cuerpo de la pagina
-Route::get('youngstar',[Body::class,'create1']);
+// Foros
+Route::middleware('auth')->group(function () {
+    Route::get('forums', [ForumController::class, 'index'])->name('forums.index'); // Listar foros
+    Route::get('forums/create', [ForumController::class, 'create'])->name('forums.create'); // Formulario para crear foro
+    Route::post('forums', [ForumController::class, 'store'])->name('forums.store'); // Guardar foro
+    Route::get('perfil', [Entrada::class, 'perfil'])->name('perfil'); // Perfil del usuario
+});
 
+// Registro de usuario
+Route::get('registro', [Entrada::class, 'create1'])->name('registro'); // Mostrar el formulario de registro
+Route::post('register', [Entrada::class, 'store'])->name('register.store'); // Manejar el registro
 
-//foros
-Route::get('foros', [ForumController::class, 'create'])->name('foros'); // Mostrar el formulario
-Route::post('foros', [ForumController::class, 'store'])->name('foros.store'); // Guardar el foro
+// Inicio de sesión
+Route::get('entrada', [Entrada::class, 'create2'])->name('entrada'); // Mostrar el formulario de login
+Route::post('login', [Entrada::class, 'store2'])->name('login.store'); // Manejar el inicio de sesión
 
-
-
-//registro de usuario
-Route::get('login', [Login::class, 'create1'])->name('login'); // Ruta para mostrar el formulario
-Route::post('register', [Login::class, 'store'])->name('register.store'); // Ruta para manejar el registro
+// Cerrar sesión 
+Route::post('logout', [Entrada::class, 'logout'])->name('logout');

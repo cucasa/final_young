@@ -10,7 +10,7 @@
                     Teléfono: +123 456 7890<br>
                     Correo electrónico: contacto@youngstar.com
                 </p>
-            </div> 
+            </div>
 
             <!-- Redes sociales -->
             <div class="col-md-6 text-md-end">
@@ -25,3 +25,4 @@
         <p class="text-center mb-0">&copy; {{ date('Y') }} YoungStar. Todos los derechos reservados.</p>
     </div>
 </footer>
+ 

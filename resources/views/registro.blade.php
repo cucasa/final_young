@@ -1,4 +1,3 @@
-{{-- filepath: c:\xampp\htdocs\yostar\resources\views\login.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -23,7 +22,7 @@
 
     <form action="{{ route('register.store') }}" method="POST">
         @csrf
-
+ 
         <h2 class="fw-bold mb-4">Registrar Usuario</h2>
 
         <div class="mb-3">

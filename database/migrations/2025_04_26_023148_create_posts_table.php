@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-  
+
             $table->text('body');
             $table->foreignId('users_id')->constrained('users');
             $table->foreignId('threads_id')->constrained('threads');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
+ 
     /**
      * Reverse the migrations.
      */

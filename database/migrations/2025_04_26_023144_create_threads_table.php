@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
- 
+
             $table->string('titulo');
             $table->text('body');
             $table->foreignId('users_id')->constrained('users');
             $table->foreignId('forums_id')->constrained('forums');
             $table->foreignId('categories_id')->constrained('categories');
-
+ 
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class Report extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+ 
     // Un reporte puede pertenecer a muchos tipos de contenido
     public function reported()
     {
